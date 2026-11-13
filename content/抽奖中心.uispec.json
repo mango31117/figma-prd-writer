@@ -1,0 +1,932 @@
+{
+  "kind": "ui",
+  "title": "抽奖中心",
+  "accent": "#165DFF",
+  "canvas": {
+    "width": 375,
+    "height": 812,
+    "fill": "#F2F3F5"
+  },
+  "meta": {
+    "platform": "APP / H5 活动页",
+    "baseline": "375px",
+    "style": "Arco 极简 · 白底卡片 · 主色 #165DFF · 单色分割线 · SVG 图标",
+    "note": "九宫格抽奖中心。全部坐标为绝对画布坐标，分组 Frame 自动换算局部坐标；所有文案、颜色、圆角均为可编辑原生图层。"
+  },
+  "nodes": [
+    {
+      "type": "rect",
+      "name": "页面背景",
+      "x": 0,
+      "y": 0,
+      "w": 375,
+      "h": 812,
+      "fill": "#F2F3F5"
+    },
+    {
+      "type": "frame",
+      "name": "状态栏",
+      "x": 0,
+      "y": 0,
+      "w": 375,
+      "h": 44,
+      "children": [
+        {
+          "type": "text",
+          "name": "时间",
+          "x": 20,
+          "y": 12,
+          "w": 50,
+          "h": 20,
+          "text": "9:41",
+          "size": 13,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "bold": true
+        },
+        {
+          "type": "icon",
+          "name": "信号",
+          "x": 280,
+          "y": 15,
+          "w": 18,
+          "h": 14,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#1D2129\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 18v-3M9 18v-6M14 18v-9M19 18V5\"/></svg>"
+        },
+        {
+          "type": "icon",
+          "name": "WiFi",
+          "x": 303,
+          "y": 15,
+          "w": 18,
+          "h": 14,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#1D2129\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 8a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M9 16a5 5 0 0 1 6 0\"/><circle cx=\"12\" cy=\"19\" r=\"1\" fill=\"currentColor\" stroke=\"none\"/></svg>"
+        },
+        {
+          "type": "rect",
+          "name": "电池外框",
+          "x": 326,
+          "y": 15,
+          "w": 24,
+          "h": 12,
+          "radius": 3,
+          "stroke": "#1D2129",
+          "strokeWidth": 1
+        },
+        {
+          "type": "rect",
+          "name": "电池电量",
+          "x": 328,
+          "y": 17,
+          "w": 18,
+          "h": 8,
+          "radius": 1,
+          "fill": "#1D2129"
+        },
+        {
+          "type": "rect",
+          "name": "电池帽",
+          "x": 351,
+          "y": 18,
+          "w": 2,
+          "h": 6,
+          "radius": 1,
+          "fill": "#1D2129"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "导航栏",
+      "x": 0,
+      "y": 44,
+      "w": 375,
+      "h": 48,
+      "children": [
+        {
+          "type": "icon",
+          "name": "返回",
+          "x": 16,
+          "y": 58,
+          "w": 20,
+          "h": 20,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#1D2129\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 5l-7 7 7 7\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "页面标题",
+          "x": 0,
+          "y": 56,
+          "w": 375,
+          "h": 24,
+          "text": "抽奖中心",
+          "size": 17,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "bold": true,
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "规则入口",
+          "x": 316,
+          "y": 58,
+          "w": 43,
+          "h": 20,
+          "text": "规则",
+          "size": 13,
+          "color": "#165DFF",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "导航分割线",
+          "x": 0,
+          "y": 91,
+          "w": 375,
+          "h": 1,
+          "fill": "#E5E6EB"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "活动头图",
+      "x": 16,
+      "y": 104,
+      "w": 343,
+      "h": 112,
+      "children": [
+        {
+          "type": "rect",
+          "name": "头图卡片",
+          "x": 16,
+          "y": 104,
+          "w": 343,
+          "h": 112,
+          "radius": 8,
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "rect",
+          "name": "限时标签底",
+          "x": 28,
+          "y": 118,
+          "w": 60,
+          "h": 20,
+          "radius": 4,
+          "fill": "#165DFF"
+        },
+        {
+          "type": "text",
+          "name": "限时标签字",
+          "x": 28,
+          "y": 118,
+          "w": 60,
+          "h": 20,
+          "text": "限时活动",
+          "size": 10,
+          "color": "#FFFFFF",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "活动标题",
+          "x": 28,
+          "y": 144,
+          "w": 250,
+          "h": 26,
+          "text": "幸运九宫格",
+          "size": 18,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "name": "活动副标题",
+          "x": 28,
+          "y": 172,
+          "w": 250,
+          "h": 18,
+          "text": "每次消耗 10 积分 · 每日 3 次机会",
+          "size": 11,
+          "color": "#86909C",
+          "valign": "CENTER"
+        },
+        {
+          "type": "icon",
+          "name": "礼物图标",
+          "x": 296,
+          "y": 132,
+          "w": 48,
+          "h": 48,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#165DFF\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"9\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M3 13h18M12 9v12\"/><path d=\"M8 9a2 2 0 1 1 4 0\"/><path d=\"M12 9a2 2 0 1 1 4 0\"/></svg>"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "积分与次数",
+      "x": 16,
+      "y": 228,
+      "w": 343,
+      "h": 64,
+      "children": [
+        {
+          "type": "rect",
+          "name": "积分卡片",
+          "x": 16,
+          "y": 228,
+          "w": 343,
+          "h": 64,
+          "radius": 8,
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "rect",
+          "name": "竖向分割线",
+          "x": 187,
+          "y": 240,
+          "w": 1,
+          "h": 40,
+          "fill": "#E5E6EB"
+        },
+        {
+          "type": "text",
+          "name": "积分数",
+          "x": 16,
+          "y": 238,
+          "w": 171,
+          "h": 26,
+          "text": "1,280",
+          "size": 20,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "bold": true,
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "积分标签",
+          "x": 16,
+          "y": 264,
+          "w": 171,
+          "h": 16,
+          "text": "我的积分",
+          "size": 11,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "剩余次数",
+          "x": 188,
+          "y": 238,
+          "w": 171,
+          "h": 26,
+          "text": "3 次",
+          "size": 20,
+          "color": "#165DFF",
+          "valign": "CENTER",
+          "bold": true,
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "剩余标签",
+          "x": 188,
+          "y": 264,
+          "w": 171,
+          "h": 16,
+          "text": "今日剩余",
+          "size": 11,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "九宫格抽奖",
+      "x": 16,
+      "y": 304,
+      "w": 343,
+      "h": 336,
+      "children": [
+        {
+          "type": "rect",
+          "name": "九宫格卡片",
+          "x": 16,
+          "y": 304,
+          "w": 343,
+          "h": 336,
+          "radius": 8,
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 5 元券",
+          "x": 25,
+          "y": 316,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 5 元券",
+          "x": 60.5,
+          "y": 332,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#165DFF\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M9 6v12\" stroke-dasharray=\"2 2\"/><circle cx=\"14\" cy=\"12\" r=\"1\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 5 元券",
+          "x": 25,
+          "y": 368,
+          "w": 103,
+          "h": 18,
+          "text": "5 元券",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 5 元券",
+          "x": 25,
+          "y": 388,
+          "w": 103,
+          "h": 14,
+          "text": "满 50 可用",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 谢谢参与",
+          "x": 136,
+          "y": 316,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 谢谢参与",
+          "x": 171.5,
+          "y": 332,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#86909C\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M8 14a4 4 0 0 0 8 0\"/><path d=\"M9 9h.01M15 9h.01\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 谢谢参与",
+          "x": 136,
+          "y": 368,
+          "w": 103,
+          "h": 18,
+          "text": "谢谢参与",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 谢谢参与",
+          "x": 136,
+          "y": 388,
+          "w": 103,
+          "h": 14,
+          "text": "再接再厉",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 10 积分",
+          "x": 247,
+          "y": 316,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 10 积分",
+          "x": 282.5,
+          "y": 332,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF7D00\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v10M9 10h6M9 14h6\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 10 积分",
+          "x": 247,
+          "y": 368,
+          "w": 103,
+          "h": 18,
+          "text": "10 积分",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 10 积分",
+          "x": 247,
+          "y": 388,
+          "w": 103,
+          "h": 14,
+          "text": "即时到账",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 8 元红包",
+          "x": 25,
+          "y": 424,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 8 元红包",
+          "x": 60.5,
+          "y": 440,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#F53F3F\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><path d=\"M5 8h14\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 8 元红包",
+          "x": 25,
+          "y": 476,
+          "w": 103,
+          "h": 18,
+          "text": "8 元红包",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 8 元红包",
+          "x": 25,
+          "y": 496,
+          "w": 103,
+          "h": 14,
+          "text": "无门槛",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "立即抽奖按钮",
+          "x": 136,
+          "y": 424,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#165DFF"
+        },
+        {
+          "type": "text",
+          "name": "按钮主文案",
+          "x": 136,
+          "y": 442,
+          "w": 103,
+          "h": 24,
+          "text": "立即抽奖",
+          "size": 15,
+          "color": "#FFFFFF",
+          "valign": "CENTER",
+          "bold": true,
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "按钮消耗文案",
+          "x": 136,
+          "y": 470,
+          "w": 103,
+          "h": 16,
+          "text": "消耗 10 积分",
+          "size": 10,
+          "color": "#FFFFFF",
+          "valign": "CENTER",
+          "opacity": 0.85,
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "按钮剩余文案",
+          "x": 136,
+          "y": 490,
+          "w": 103,
+          "h": 14,
+          "text": "剩 3 次",
+          "size": 10,
+          "color": "#FFFFFF",
+          "valign": "CENTER",
+          "opacity": 0.85,
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 会员 7 天",
+          "x": 247,
+          "y": 424,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 会员 7 天",
+          "x": 282.5,
+          "y": 440,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#722ED1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 8l4 4 5-7 5 7 4-4-2 11H5z\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 会员 7 天",
+          "x": 247,
+          "y": 476,
+          "w": 103,
+          "h": 18,
+          "text": "会员 7 天",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 会员 7 天",
+          "x": 247,
+          "y": 496,
+          "w": 103,
+          "h": 14,
+          "text": "立即生效",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 实物好礼",
+          "x": 25,
+          "y": 532,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 实物好礼",
+          "x": 60.5,
+          "y": 548,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#00B42A\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7l9-4 9 4v10l-9 4-9-4z\"/><path d=\"M3 7l9 4 9-4M12 11v10\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 实物好礼",
+          "x": 25,
+          "y": 584,
+          "w": 103,
+          "h": 18,
+          "text": "实物好礼",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 实物好礼",
+          "x": 25,
+          "y": 604,
+          "w": 103,
+          "h": 14,
+          "text": "限量 10 份",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 50 积分",
+          "x": 136,
+          "y": 532,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 50 积分",
+          "x": 171.5,
+          "y": 548,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF7D00\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v10M9 10h6M9 14h6\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 50 积分",
+          "x": 136,
+          "y": 584,
+          "w": 103,
+          "h": 18,
+          "text": "50 积分",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 50 积分",
+          "x": 136,
+          "y": 604,
+          "w": 103,
+          "h": 14,
+          "text": "即时到账",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "rect",
+          "name": "奖品格 · 20 元券",
+          "x": 247,
+          "y": 532,
+          "w": 103,
+          "h": 100,
+          "radius": 6,
+          "fill": "#F7F8FA",
+          "stroke": "#E5E6EB",
+          "strokeWidth": 1
+        },
+        {
+          "type": "icon",
+          "name": "奖品图标 · 20 元券",
+          "x": 282.5,
+          "y": 548,
+          "w": 32,
+          "h": 32,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#165DFF\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M9 6v12\" stroke-dasharray=\"2 2\"/><circle cx=\"14\" cy=\"12\" r=\"1\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "奖品名 · 20 元券",
+          "x": 247,
+          "y": 584,
+          "w": 103,
+          "h": 18,
+          "text": "20 元券",
+          "size": 12,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "align": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "奖品说明 · 20 元券",
+          "x": 247,
+          "y": 604,
+          "w": 103,
+          "h": 14,
+          "text": "满 99 可用",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "上次中奖",
+      "x": 16,
+      "y": 648,
+      "w": 343,
+      "h": 32,
+      "children": [
+        {
+          "type": "rect",
+          "name": "提示条底",
+          "x": 16,
+          "y": 648,
+          "w": 343,
+          "h": 32,
+          "radius": 4,
+          "fill": "#F2F7FF"
+        },
+        {
+          "type": "icon",
+          "name": "小喇叭",
+          "x": 28,
+          "y": 656,
+          "w": 16,
+          "h": 16,
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#165DFF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9\"/><path d=\"M10 21h4\"/></svg>"
+        },
+        {
+          "type": "text",
+          "name": "提示文案",
+          "x": 52,
+          "y": 648,
+          "w": 295,
+          "h": 32,
+          "text": "上次抽中 5 元优惠券 · 查看卡包 ›",
+          "size": 12,
+          "color": "#165DFF",
+          "valign": "CENTER"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "奖品与记录",
+      "x": 16,
+      "y": 692,
+      "w": 343,
+      "h": 88,
+      "children": [
+        {
+          "type": "rect",
+          "name": "记录卡片",
+          "x": 16,
+          "y": 692,
+          "w": 343,
+          "h": 88,
+          "radius": 8,
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "name": "我的奖品",
+          "x": 28,
+          "y": 702,
+          "w": 180,
+          "h": 20,
+          "text": "我的奖品",
+          "size": 13,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "name": "查看全部",
+          "x": 250,
+          "y": 702,
+          "w": 97,
+          "h": 20,
+          "text": "查看全部 ›",
+          "size": 12,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "RIGHT"
+        },
+        {
+          "type": "rect",
+          "name": "记录分割线",
+          "x": 28,
+          "y": 726,
+          "w": 319,
+          "h": 1,
+          "fill": "#F2F3F5"
+        },
+        {
+          "type": "text",
+          "name": "中奖记录",
+          "x": 28,
+          "y": 736,
+          "w": 180,
+          "h": 20,
+          "text": "中奖记录",
+          "size": 13,
+          "color": "#1D2129",
+          "valign": "CENTER",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "name": "记录条数",
+          "x": 250,
+          "y": 736,
+          "w": 97,
+          "h": 20,
+          "text": "共 12 条",
+          "size": 12,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "RIGHT"
+        },
+        {
+          "type": "text",
+          "name": "最近记录",
+          "x": 28,
+          "y": 758,
+          "w": 250,
+          "h": 16,
+          "text": "11-12 09:41  5 元优惠券",
+          "size": 11,
+          "color": "#86909C",
+          "valign": "CENTER"
+        },
+        {
+          "type": "text",
+          "name": "记录状态",
+          "x": 280,
+          "y": 758,
+          "w": 67,
+          "h": 16,
+          "text": "已发放",
+          "size": 11,
+          "color": "#00B42A",
+          "valign": "CENTER",
+          "align": "RIGHT"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "活动规则",
+      "x": 16,
+      "y": 788,
+      "w": 343,
+      "h": 16,
+      "children": [
+        {
+          "type": "text",
+          "name": "规则脚注",
+          "x": 16,
+          "y": 788,
+          "w": 343,
+          "h": 16,
+          "text": "活动规则：每日 3 次机会，奖品数量有限，详见「规则」页",
+          "size": 10,
+          "color": "#86909C",
+          "valign": "CENTER",
+          "align": "CENTER"
+        }
+      ]
+    }
+  ]
+}

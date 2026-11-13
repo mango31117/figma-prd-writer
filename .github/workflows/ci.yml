@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate plugin package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 1) manifest.json 可解析且关键字段齐全
+      - name: Validate manifest.json
+        run: |
+          node -e '
+            const m = require("./manifest.json");
+            const need = ["id","name","api","main","ui","editorType","networkAccess"];
+            const missing = need.filter(k => !(k in m));
+            if (missing.length) { console.error("manifest missing:", missing); process.exit(1); }
+            if (!/^\d+$/.test(String(m.id))) { console.error("manifest id must be a numeric string"); process.exit(1); }
+            console.log("manifest OK:", m.name, m.id);
+          '
+
+      # 2) 所有 JS 语法编译
+      - name: Syntax-check JS files
+        run: |
+          for f in code.js bridge/server.js bridge/push.js tools/spec-to-html.js; do
+            node --check "$f" && echo "OK $f"
+          done
+
+      # 3) uispec 示例 JSON 可解析且结构完整
+      - name: Validate uispec samples
+        run: |
+          node -e '
+            const fs = require("fs");
+            const files = fs.readdirSync("content").filter(f => f.endsWith(".uispec.json"));
+            if (files.length === 0) { console.error("no uispec samples found"); process.exit(1); }
+            for (const f of files) {
+              const s = JSON.parse(fs.readFileSync("content/" + f, "utf8"));
+              if (!s.canvas || !Array.isArray(s.nodes) || s.nodes.length === 0) {
+                console.error(f, "missing canvas/nodes"); process.exit(1);
+              }
+              console.log("spec OK:", f, "-", s.canvas.width + "x" + s.canvas.height, "-", s.nodes.length, "groups");
+            }
+          '
+
+      # 4) 敏感信息扫描（Figma PAT / API Key / 密码）
+      - name: Scan for secrets
+        run: |
+          if grep -rInE 'figd_[A-Za-z0-9]{20,}|FIGMA_API_KEY[[:space:]]*[=:][[:space:]]*[^$<{[:space:]]+' \
+              --exclude-dir=.git --exclude='*.png' --exclude='*.jpg' . ; then
+            echo "::error::Potential secret found in repository"
+            exit 1
+          fi
+          echo "secret scan clean"
+
+      # 5) 运行时状态文件不得入库
+      - name: Ensure runtime state excluded
+        run: |
+          for f in bridge/outbox/latest.json bridge/outbox/state.json; do
+            if [ -e "$f" ]; then echo "::error::$f must not be committed"; exit 1; fi
+          done
+          echo "runtime state clean"

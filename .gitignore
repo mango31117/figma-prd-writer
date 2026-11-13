@@ -1,0 +1,25 @@
+# --- 运行时状态（含上次推送内容，绝不入库） ---
+bridge/outbox/latest.json
+bridge/outbox/state.json
+
+# --- 依赖（本项目零依赖，出现即异常） ---
+node_modules/
+package-lock.json
+
+# --- 日志 / 临时 ---
+*.log
+*.tmp
+*.bak
+
+# --- 编辑器 / 系统 ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/
+*.pyc
+
+# --- 打包产物（release 资产走 GitHub Releases，不进仓库） ---
+dist/
+*.zip

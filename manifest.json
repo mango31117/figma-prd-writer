@@ -1,0 +1,14 @@
+{
+  "name": "PRD to Figma Writer",
+  "id": "1380000000000000001",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["http://localhost:9876"],
+    "reasoning": "Receive PRD content generated in WorkBuddy from the local bridge service.",
+    "devAllowedDomains": ["http://localhost:9876"]
+  }
+}
