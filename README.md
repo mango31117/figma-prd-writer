@@ -269,7 +269,7 @@ node bridge/push.js --file "content/个人APP登录界面PRD.md" \
 ---
 
 
-##7. 安全与隐私
+## 7. 安全与隐私
 
 - 本插件**不需要任何 Figma Token / API Key**；早期探测用的 Figma Personal Access Token（`figd` 前缀）属于另一条只读 MCP 支线，未写入本包任何文件。
 - 全部通信只在 `localhost:9876` 回环内，`networkAccess` 未放行任何外网域名。
