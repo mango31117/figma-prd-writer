@@ -268,81 +268,8 @@ node bridge/push.js --file "content/个人APP登录界面PRD.md" \
 
 ---
 
-## 7. 上传到 WorkBuddy 开放平台「专家」
 
-> ⚠️ **这是另一条链路，别和 Figma 插件导入混在一起。** 本 ZIP 是「Figma 插件产物包」，用于本地验收；它**不是**可直接上传的专家包。专家包有完全不同的目录结构与白名单。
-
-### 7.1 专家包必需结构
-
-```
-<expert-name>/                          ← 必须位于 ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
-├── .codebuddy-plugin/
-│   └── plugin.json                    ← 唯一必需的配置（注意目录名是 .codebuddy-plugin）
-├── agents/
-│   └── <agentName>.md                 ← frontmatter 的 name 必须等于文件名；禁止 tools 字段
-├── skills/
-│   └── <skill-name>/
-│       └── SKILL.md                   ← 若 plugin.json 声明 skills，此文件必需
-├── avatars/
-│   └── expert.png                     ← 512×512、≤500KB
-└── README.md
-```
-
-**配置文件完整路径**：`~/.workbuddy/plugins/marketplaces/my-experts/plugins/<expert-name>/.codebuddy-plugin/plugin.json`（注意目录名是 `.codebuddy-plugin`，不是 `.workbuddy-plugin`）。
-
-**禁止出现**：`hooks/`、`commands/`、`.lsp.json`；`agents/` / `skills/` / `bin/` / `avatars/` 不能塞进 `.codebuddy-plugin/` 里。
-打包脚本会跳过隐藏文件（除 `.codebuddy-plugin`）、`__pycache__`、`node_modules`、`.gitkeep`、`.DS_Store`、`Thumbs.db`。
-
-### 7.2 plugin.json 必填字段
-
-| 字段 | 要求 |
-|---|---|
-| `name` | kebab-case，≥2 字符，与 `plugin` 字段一致，也是 skill 命名空间前缀 |
-| `version` / `description` | 语义化版本 / 英文一句话 |
-| `expertType` / `agentName` | 建议 `"agent"`（单角色）；`agentName` 必须有业务语义，**不能叫 `team-lead`** |
-| `agents` / `skills` | 路径数组，如 `["./agents/figma-prd-writer.md"]` |
-| `displayName` / `profession` / `displayDescription` / `defaultInitPrompt` | 均需 `{en, zh}`；描述中文 **40–50 字** |
-| `categoryId` | 建议 `01-ProductDesign`（主要输出物是 UI 设计稿 / 可编辑画布，服务对象是产品设计师） |
-| `tags` / `quickPrompts` | **各固定 3 个**，均 `{en, zh}`；`defaultInitPrompt` 须等于 `quickPrompts[0]` |
-| `avatar` / `plugin` | 头像相对路径 / 与 `name` 一致 |
-
-`name`、`agentName`、专家目录名、`agents/*.md` 文件名是唯一标识，创建后**不可原地改名**。
-
-### 7.3 标准流程（届时执行）
-
-```bash
-# 1 初始化（路径固定，不能改到别处）
-python3 scripts/init_expert.py <expert-name> --type agent \
-  --path ~/.workbuddy/plugins/marketplaces/my-experts/plugins
-
-# 2 填充 plugin.json / agents/*.md，用 ImageGen 生成头像
-
-# 3 校验
-python3 scripts/validate_expert.py <expert-dir>
-
-# 4 注册（写入 marketplace.json，不可跳过）
-python3 scripts/register_expert.py <expert-dir>
-
-# 5 打包
-python3 scripts/package_expert.py <expert-dir> ./dist
-```
-
-**本轮为什么没有直接生成专家包**：规范强制要求专家落在固定目录才能被检测，且 `displayName`（花名）、`profession`（职业头衔）、3 个 `tags`、3 个 `quickPrompts` 都需你确认后才好填；凭空捏造展示信息，回头还得重做。等你一句话确认这些字段，即可按上面流程产出可上传的专家 ZIP。
-
-### 7.4 建议的挂载方式
-
-把本插件作为**能力层**挂进专家包的 `skills/`：
-
-- `skills/figma-prd-writer/SKILL.md` — 触发条件、工作流、硬闸门（何时推流、何时必须重新运行插件、防覆盖语义）
-- `skills/figma-prd-writer/scripts/` — `push.js` / `server.js` / `spec-to-html.js`
-- `skills/figma-prd-writer/assets/` — `manifest.json` / `code.js` / `ui.html` / 示例 spec / 预览页
-- `skills/figma-prd-writer/references/` — `README.md` / `DEPENDENCIES.md` / spec 字段说明
-
-专家本体只负责「人设、一键入口、选题取舍、跨期记忆、对外分发」；「怎么做对」留在 skill 里。这样上传时既符合 `SKILL.md` 白名单校验，也不会把 60KB 的 `ui.html` 塞进专家根目录。
-
----
-
-## 8. 安全与隐私
+##7. 安全与隐私
 
 - 本插件**不需要任何 Figma Token / API Key**；早期探测用的 Figma Personal Access Token（`figd` 前缀）属于另一条只读 MCP 支线，未写入本包任何文件。
 - 全部通信只在 `localhost:9876` 回环内，`networkAccess` 未放行任何外网域名。
@@ -351,7 +278,7 @@ python3 scripts/package_expert.py <expert-dir> ./dist
 
 ---
 
-## 9. 许可与版本
+## 8. 许可与版本
 
 - 版本：v1.0.0（2026-11-13）
 - 交付形态：单个 ZIP，解压即用；无安装器、无注册表写入、无后台自启。
@@ -359,35 +286,3 @@ python3 scripts/package_expert.py <expert-dir> ./dist
 - 许可：MIT（见 `LICENSE`）；变更记录见 `CHANGELOG.md`；完整依赖见 `DEPENDENCIES.md`。
 
 ---
-
-## 10. 上传到 GitHub
-
-本目录已按 GitHub 仓库标准配好，直接推即可：
-
-```bash
-cd figma-prd-writer
-
-# 首次
-git init
-git add .
-git status            # 预期：不含 bridge/outbox/latest.json、state.json、dist/
-git commit -m "feat: PRD/UI to Figma writer v1.0.0"
-
-git branch -M main
-git remote add origin https://github.com/<你的用户名>/figma-prd-writer.git
-git push -u origin main
-```
-
-**已配好的仓库件**：
-
-| 文件 | 作用 |
-|---|---|
-| `.gitignore` | 排除 `outbox/latest.json`、`outbox/state.json`（含上次推送内容）、`dist/`、编辑器杂项 |
-| `.gitattributes` | 文本入库统一 LF；`*.bat` 检出保持 CRLF；图片 / zip 标记 binary |
-| `LICENSE` | MIT |
-| `CHANGELOG.md` | v1.0.0 变更记录 |
-| `.github/workflows/ci.yml` | push / PR 自动跑 5 项校验：manifest 字段齐全、4 个 JS 语法、uispec 可解析、敏感串扫描、运行时状态未入库 |
-
-**配图引用**：README 内 4 张 `docs/*.png` 用的是相对路径，推上 GitHub 后在仓库首页直接渲染，无需改链接。
-
-**发布 Release**（可选，ZIP 不入库）：仓库页 → *Releases → Draft a new release* → tag `v1.0.0` → 把 `dist/figma-prd-writer-v1.0.0.zip` 拖进 *Attach binaries*。下载者拿到的 ZIP 与本地验收包完全一致。
